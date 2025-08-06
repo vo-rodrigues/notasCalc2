@@ -1,0 +1,2 @@
+{"rule":"MORFOLOGIK_RULE_PT_BR","sentence":"^\\Q[NT] \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-)[0-9]+\\Q (não trivialidade).\\E$"}
+{"rule":"PORTUGUESE_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QOu seja, se, e somente se \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-)[0-9]+\\Q.\\E$"}
