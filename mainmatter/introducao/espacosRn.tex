@@ -146,3 +146,36 @@ O produto escalar de $v=(1, 2)$ por $2$ e por $-2$ correspondem a, respectivamen
     \end{tikzpicture}
     \caption{Produto por escalar em $\mathbb R^2$.}
 \end{figure}
+
+A norma de um vetor $v=(x_1, \ldots, x_n)$ é o comprimento do vetor que parte da origem até o ponto $(x_1, \ldots, x_n)$ utilizando-se a métrica  usual (Euclidiana) em $\mathbb R^n$.
+
+O produto escalar pode ser utilizado para decidir-se ortogonalidade entre vetores.
+É fato conhecido que vale a recíproca do Teorema de Pitágoras: se $\triangle BAC$ é um triângulo, então o ângulo $\angle ABC$ é reto se, e somente se, sendo $a, b, c$ respectivamente as medidas dos segmentos $\overline{BC}, \overline{AC}, \overline{AB}$, temos que $a^2=b^2+c^2$.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+    % Pontos do triângulo
+    \coordinate (B) at (0,0);
+    \coordinate (A) at (4,0);
+    \coordinate (C) at (4,3);
+
+    % Lados do triângulo
+    \draw[thick] (B) -- (A) -- (C) -- cycle;
+
+    % Marcação do ângulo reto em B
+    \draw (A) ++(-0.4,0) -- ++(0,0.4) -- ++(0.4,0);
+
+    % Nome dos vértices
+    \node[right] at (A) {$A$};
+    \node[left] at (B) {$B$};
+    \node[above right] at (C) {$C$};
+
+    % Lados a, b, c
+    \path (B) -- node[above left] {$a$} (C);
+    \path (A) -- node[right] {$b$} (C);
+    \path (A) -- node[below] {$c$} (B);
+
+    \end{tikzpicture}
+    \caption{Triângulo retângulo.}
+\end{figure}
