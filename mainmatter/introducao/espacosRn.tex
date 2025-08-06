@@ -178,4 +178,37 @@ O produto escalar pode ser utilizado para decidir-se ortogonalidade entre vetore
 
     \end{tikzpicture}
     \caption{Triângulo retângulo.}
+
+    No aspecto vetorial, dados dois vetores $v$ e $w$, perceba que o vetor $v+w=v+(-w)$ pode ser representado como o segmento que une as extremidades dos vetores $v$ e $-w$, conforme ilustrado abaixo.
+
+    \begin{tikzpicture}
+    \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
+    \draw[->,ultra thick] (0,-3)--(0,3) node[above]{$y$};
+    % Vetor v
+    \draw[->,thick] (0,0) -- (2,1) node[above right]{$w$};
+    % Vetor v-w
+    \draw[->,thick] (0,0) -- (-1,-2) node[below left]{$v-w$};
+    \draw[->,dotted] (2,1) -- (1,-1);
+    % Vetor v+w
+    \draw[->,thick] (0,0) -- (1,-1) node[below right]{$v=w+(v-w)$};
+    \end{tikzpicture}
 \end{figure}
+
+Assim, os vetores $v$ e $w$ são ortogonais, se, e somente se, $\|v-w\|^2=\|v\|^2+\|w\|^2$.
+
+\begin{proposition}
+    Sejam $v, w \in \mathbb R^n$. Então, $v$ e $w$ são ortogonais se, e somente se, $v \cdot w = 0$.
+\end{proposition}
+\begin{proof}
+    Notemos que, no geral:
+    \begin{equation*}
+        \|v-w\|^2 = (v-w) \cdot (v-w) = v \cdot v - 2v \cdot w + w \cdot w = \|v\|^2 - 2v \cdot w + \|w\|^2.
+    \end{equation*}
+    Assim, temos que:
+    \begin{align*}
+        \|v-w\|^2 &= \|v\|^2 + \|w\|^2 \\
+        &\iff \|v\|^2 - 2v \cdot w + \|w\|^2 = \|v\|^2 + \|w\|^2 \\
+        &\iff -2v \cdot w = 0 \\
+        &\iff v \cdot w = 0.
+    \end{align*}
+\end{proof}
