@@ -1,5 +1,5 @@
-# Notas de aula da disciplina MAT0134 - Anéis e Corpos no IME-USP
-Este repositório contém notas de aula da disciplina MAT0134 - Anéis e Corpos no IME-USP, disciplina obrigatória para o curso de Licenciatura em Matemática do IME-USP, ministrada pelo docente Prof. Vinicius de Oliveira Rodrigues, Professor Doutor do Departamento de Matemática do IME-USP.
+# Notas de aula da disciplina MAT2454 - Cálculo Diferencial e Integral II.
+Este repositório contém notas de aula da disciplina MAT2454 - Cálculo Diferencial e Integral II, ministrada pelo docente Prof. Vinicius de Oliveira Rodrigues, Professor Doutor do Departamento de Matemática do IME-USP, para o IAG-USP.
 No presente estado, estas notas estão em construção e **apenas com muita cautela devem ser utilizadas para estudo**.
 Para mais informações e sugestões, envie um e-mail para vinior@ime.usp.br.
 
