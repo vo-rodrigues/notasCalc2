@@ -1,0 +1,224 @@
+\section{Regras básicas de Continuidade em $\mathbb R^n$}
+
+
+\begin{proposition}
+    Seja $f: \mathbb R^n\rightarrow R$ uma projeção, ou seja, uma função da forma $f(x_1, \dots, x_n) = x_i$ para algum $i \in \{1, \dots, n\}$.
+    Então $f$ é contínua.
+\end{proposition}
+\begin{proof}
+    Seja $p=(p_1, \dots, p_n) \in \mathbb R^n$ e $\epsilon>0$.
+
+    Note que, dado qualquer $x=(x_1, \dots, x_n) \in \mathbb R^n$, temos que:
+    \begin{equation*}
+        d(f(x), f(p)) = |x_i - p_i| \leq \sqrt{(x_1 - p_1)^2 + \cdots + (x_n - p_n)^2} = d(x, p).
+    \end{equation*}
+
+    Assim, se $d(x, p)<\epsilon$, então $d(f(x), f(p))<\epsilon$.
+    Logo, tomando $\delta=\epsilon$, vemos que $f$ é contínua em $p$.
+\end{proof}
+
+\begin{proposition}
+    Seja $f: \mathbb R^n\rightarrow R$ uma função constante, ou seja, uma função da forma $f(x_1, \dots, x_n) = k$ para algum $k \in \mathbb R$.
+    Então $f$ é contínua.
+\end{proposition}
+\begin{proof}
+    Seja $p=(p_1, \dots, p_n) \in \mathbb R^n$ e $\epsilon>0$.
+
+    Note que, dado qualquer $x=(x_1, \dots, x_n) \in \mathbb R^n$, temos que:
+    \begin{equation*}
+        d(f(x), f(p)) = |k-k|=0<\epsilon
+    \end{equation*}
+
+    Assim, escolhendo qualquer $\delta>0$ (por exemplo, $\delta=1$), vemos que $f$ é contínua em $p$.
+\end{proof}
+
+Lembremos que se $f, g: A \to \mathbb R$, podemos definir as funções $f+g$, $f-g$, $fg$ e $\frac{f}{g}$ (desde que $g(x)\neq 0$ para todo $x \in A$) como a seguir.
+
+\begin{definition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto e $f, g: A \to \mathbb R$ funções.
+    Então, definimos as funções $f+g:A\rightarrow \mathbb R$, $f-g:A\rightarrow \mathbb R$, $fg:A\rightarrow \mathbb R$ e $\frac{f}{g}:B\rightarrow \mathbb R$, em que $B=\{x \in A : g(x)\neq 0\}$, por:
+    \begin{align*}
+        (f+g)(x) &= f(x) + g(x) \\
+        (f-g)(x) &= f(x) - g(x) \\
+        (fg)(x) &= f(x)g(x) \\
+        \left(\frac{f}{g}\right)(x) &= \frac{f(x)}{g(x)}.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto e $f, g: A \to \mathbb R$ funções.
+    Seja $a \in A$ um ponto de acumulação de $A$.
+
+    Sejam $L, S \in \mathbb R$ tais que $\lim_{x\to a} f(x) = L$ e $\lim_{x\to a} g(x) = S$.
+
+    Então:
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $\lim_{x\to a} (f+g)(x) = L + S$;
+        \item $\lim_{x\to a} (fg)(x) = LS$;
+        \item $\lim_{x\to a} (f-g)(x) = L - S$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Provaremos primeiro o item (a).
+    Seja dado $\epsilon>0$.
+
+    Como $\lim_{x\to a} f(x) = L$, existe $\delta_f>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta_f$, então $|f(x) - L| < \frac{\epsilon}{2}$.
+
+    Analogamente, como $\lim_{x\to a} g(x) = S$, existe $\delta_g>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta_g$, então $|g(x) - S| < \frac{\epsilon}{2}$.
+
+    Seja $\delta = \min\{\delta_f, \delta_g\}$
+    Agora, dado $x \in A\setminus\{a\}$ tal que $d(x, a) < \delta$, temos que:
+    \begin{align*}
+        |(f+g)(x) - (L + S)| &= |f(x) + g(x) - L - S| \\
+        &= |(f(x) - L) + (g(x) - S)| \\
+        &\leq |f(x) - L| + |g(x) - S| \\
+        &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+    \end{align*}
+      
+    Logo, $\lim_{x\to a} (f+g)(x) = L + S$.
+
+    Agora, provaremos o item (b).
+    Seja dado $\epsilon>0$. Fixe um número positivo $M$ qualquer.
+    Como $\lim_{x\to a} f(x) = L$, existe $\delta_f>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta_f$, então $|f(x) - L| < M$.
+
+    Analogamente, como $\lim_{x\to a} g(x) = S$, existe $\delta_g>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta_g$, então $|g(x) - S| < M$.
+
+    Seja $\delta = \min\{\delta_f, \delta_g\}$
+
+    Agora, dado $x \in A\setminus\{a\}$ tal que $d(x, a) < \delta$, temos que:
+
+    \begin{align*}
+        |(fg)(x) - LS| &= |f(x)g(x) - LS| \\
+        &= |f(x)g(x) - f(x)S + f(x)S - LS| \\
+        &= |f(x)(g(x) - S) + S(f(x) - L)| \\
+        &\leq |f(x)||g(x) - S| + |S||f(x) - L| \\
+        &< |f(x)|M + |S|M \\
+        &= (|f(x)| + |S|)M.
+    \end{align*}
+
+    Notemos que, nessa hipótese, $|f(x)|=|f(x) - L + L| \leq |f(x) - L| + |L| < M + |L|$.
+    Logo, $|(fg)(x) - LS| < (M + |L| + |S|)M$.
+
+    Tomando, de partida, $M$ tal que $M<1$ e $M < \frac{\epsilon}{1 + |L| + |S|}$, concluímos que $|(fg)(x) - LS| < (M + |L| + |S|)M<(1+|L|+|S|)\frac{\epsilon}{1 + |L| + |S|}=\epsilon$.
+
+    Logo, $\lim_{x\to a} (fg)(x) = LS$.
+
+    Para o item (c), note que $f-g = f + (-1)g$.
+    Como a função constante $(-1)$ é contínua, decorre dos itens anteriores que o limite de $f-g$ em $a$ é $L +(-1)S = L - S$.
+\end{proof}
+
+\begin{corollary}
+    Seja $A\subseteq \mathbb R^n$ um conjunto e $f, g: A \to \mathbb R$ funções e $a \in A$.
+
+    Se $f, g$ são contínuas em $a$, então as funções $f+g$, $f-g$ e $fg$ são contínuas em $a$.
+\end{corollary}
+
+\begin{proof}
+    Se $a$ é ponto isolado de $A$, então $f, g, f+g, f-g$ e $fg$ são contínuas em $a$.
+
+    Caso contrário, temos, da hipótese de continuidade, que, $\lim_{x\to a} f(x) = f(a)$ e $\lim_{x\to a} g(x) = g(a)$.
+    Daí, da proposição anterior, temos que:
+    \begin{align*}
+        \lim_{x\to a} (f+g)(x) &= f(a) + g(a) = (f+g)(a) \\
+        \lim_{x\to a} (f-g)(x) &= f(a) - g(a) = (f-g)(a) \\
+        \lim_{x\to a} (fg)(x) &= f(a)g(a) = (fg)(a).
+    \end{align*}
+    Assim, $f+g$, $f-g$ e $fg$ são contínuas em $a$.
+\end{proof}
+
+Sobre funções compostas, temos o seguinte resultado.
+\begin{proposition}
+    Sejam $f: A \to \mathbb B$ e $g: B \to \mathbb R^k$, onde $A\subseteq \mathbb R^m$ e $B\subseteq \mathbb R^n$ são conjuntos tais que $f(A)\subseteq B$.
+    Seja $a \in \mathbb R^n$ um ponto de acumulação de $A$ e $L \in B$.
+
+    Se $\lim_{x\to a} f(x) = L$ e $g$ é contínua em $L$, então $\lim_{x\to a} (g\circ f)(x) = g(L)$.
+\end{proposition}
+
+\begin{proof}
+    Seja dado $\epsilon>0$.
+
+    Como $g$ é contínua em $L$, existe $\eta>0$ tal que, para todo $y \in B$, se $d(y, L) < \eta$, então $d(g(y), g(L)) < \epsilon$.
+
+    Como $\lim_{x\to a} f(x) = L$ e $g$ é contínua em $L$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta$, então $d(f(x), L) < \eta$.
+
+
+    Agora, dado $x \in A\setminus\{a\}$ tal que $d(x, a) < \delta$, temos que $d(f(x), L) < \eta$, logo, $d((g\circ f)(x), g(L)) < \epsilon$.
+
+    Assim, $\lim_{x\to a} (g\circ f)(x) = g(Lssssss)$.
+\end{proof}
+
+Como consequência, temos os seguintes corolários.
+
+\begin{corollary}
+    Sejam $f: A \to \mathbb B$ e $g: B \to \mathbb R^k$, onde $A\subseteq \mathbb R^m$ e $B\subseteq \mathbb R^n$ são conjuntos tais que $f(A)\subseteq B$.
+    Seja $a \in A$ um ponto de acumulação de $A$ e $L \in B$.
+
+    Se $\lim_{x\to a} f(x) = L$ e $g$ é contínua em $L$, então $\lim_{x\to a} (g\circ f)(x) = g(L)$.
+\end{corollary}
+
+\begin{corollary}
+    Sejam $f: A \to \mathbb R\setminus \{0\}$, com $A\subseteq \mathbb R^n$, e $a \in \mathbb R^n$ um ponto de acumulação de $A$.
+
+    Se $\lim f(x) = L \neq 0$ e $f$ é contínua em $a$, $\lim _{x\to a} \frac{1}{f(x)} = \frac{1}{L}$.
+\end{corollary}
+
+\begin{proof}
+    Note que a função $g:\mathbb R\setminus\{0\}\rightarrow \mathbb R$ dada por $g(x) = \frac{1}{x}$ é contínua em todo ponto de seu domínio.
+\end{proof}
+
+\begin{corollary}
+    Sejam $f: A \to \mathbb R\setminus \{0\}$, com $A\subseteq \mathbb R^n$, e $a \in A$.
+
+    Se $f$ é contínua em $a$, então $\frac{1}{f}$ é contínua em $a$.
+\end{corollary}
+
+Sobre composição de funções, temos também o seguinte resultado.
+\begin{proposition}
+    Sejam $f: A \rightarrow \mathbb R^n$, com $A\subseteq \mathbb R^m$, e $a$ ponto de acumulação de $A$.
+
+    Suponha que exista $\lim_{x\to a} f(x) = L \in \mathbb R^n$.
+
+    Então, para todo $u: U\rightarrow A$, com $U\subseteq \mathbb R^k$ e $\alpha$ ponto de acumulação de $U$, se:
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Existe uma bola aberta $B$ em torno de $\alpha$ tal que para todo $t \in B\cap U\setminus\{u\}$, temos que $u(t)\neq \alpha$.
+        \item $\lim_{t\to \alpha} u(t) = a$.
+    \end{enumerate}
+
+    Então $\lim_{t\to \alpha} (f\circ u)(t) = L$.
+\end{proposition}
+
+\begin{proof}
+    Seja dado $\epsilon>0$.
+
+    Como $\lim_{x\to a} f(x) = L$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \eta$, então $d(f(x), L) < \epsilon$.
+
+    Como $\lim_{t\to \alpha} u(t) = a$, existe $\delta_u>0$ tal que, para todo $t \in U\setminus\{\alpha\}$, se $d(t, \alpha) < \delta_u$, então $d(u(t), a) < \eta$.
+
+   Além disso, existe $\delta'>0$ tal que para todo $t \in B(\alpha, \delta')$ com $t\neq \alpha$, temos que $u(t)\neq \alpha$.
+
+    Seja $\delta = \min\{\delta_u, \delta'\}$.
+
+    Agora, dado $t \in U\setminus\{\alpha\}$ tal que $d(t, \alpha) < \delta$, temos que $d(u(t), a) < \delta_u$ e $u(t)\neq \alpha$, logo, $d((f\circ u)(t), L) < \epsilon$.
+
+    Assim, $\lim_{t\to \alpha} (f\circ u)(t) = L$.
+\end{proof}
+
+Com isso, temos o seguinte.
+
+\begin{corollary}[Teste das curvas]
+    Sejam $f: A \rightarrow \mathbb R$, com $A\subseteq \mathbb R^m$, e $p$ ponto de acumulação de $A$.
+
+    Sejam $u, v: I\rightarrow A$, com $I\subseteq \mathbb R$ um intervalo aberto contínuas em $\alpha \in I$ e $u(\alpha) = v(\alpha) = p$.
+
+    Se existir o limite $L$ de $f$ em $p$, então $L=\lim_{t\to \alpha} (f\circ u)(t) = \lim_{t\to \alpha} (f\circ v)(t)$.
+
+    Em particular:
+
+    \begin{itemize}
+        \item Se $f\circ u$ ou $f\circ v$ não possuirem limites em $\alpha$, então $f$ não possui limite em $p$.
+        \item Se $f\circ u$ e $f\circ v$ possuírem limites em $\alpha$, mas $\lim_{t\to \alpha} (f\circ u)(t) \neq \lim_{t\to \alpha} (f\circ v)(t)$, então $f$ não possui limite em $p$.
+        \item Se $f\circ u$ e $f\circ v$ possuírem limites em $\alpha$, e ambos forem iguais, o teste é inconclusivo, mas outras curvas podem ser testadas.
+    \end{itemize}
+\end{corollary}

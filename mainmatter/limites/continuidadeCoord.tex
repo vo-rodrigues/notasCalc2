@@ -1,0 +1,47 @@
+\section{Continuidade via funções coordenadas}
+Se $A$ é qualquer conjunto e $f: A \to \mathbb R^m$ é uma função, então para cada $a \in A$, $f(a)$, sendo um elemento de $\mathbb R^m$, é um ponto $(y_1, \dots, y_m)$.
+As coordenadas $y_i$ são denotadas por $f_i(a)$.
+Assim, $f(a) = (f_1(a), \dots, f_m(a))$.
+
+\begin{definition}
+    Seja $f: A \to \mathbb R^m$ uma função.
+    As funções coordenadas de $f$ são as únicas funções $f_i: A \to \mathbb R$ tal que, para todo $a \in A$, temos $f(a) = (f_1(a), \dots, f_m(a))$.
+\end{definition}
+
+\begin{proposition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função.
+
+    Então, $f$ é contínua em $p \in A$ se, e somente se, todas as funções coordenadas $f_i$ são contínuas em $p$.
+\end{proposition}
+
+\begin{proof}
+    Primeiro, suponha que $f$ é contínua em $p$.
+    Vejamos que cada função coordenada $f_i$ é contínua em $p$.
+    
+    Para isso, fixamos um $i \in \{1, \dots, m\}$ e consideramos $\epsilon>0$.
+
+    Como $f$ é contínua em $p$, existe $\delta>0$ tal que, para todo $x \in A$, se $d(x, p) < \delta$, então $d(f(x), f(p)) < \epsilon$.
+
+    Veremos que o mesmo $\delta$ funciona para $f_i$.
+    De fato, se $d(x, p) < \delta$, então temos:
+
+    \begin{align*}
+        |f_i(x) - f_i(p)| &= \sqrt{(f_i(x) - f_i(p))^2} \\
+        &= \sqrt{(f_1(x) - f_1(p))^2 + \cdots + (f_m(x) - f_m(p))^2} \\
+        &= \|f(x) - f(p)\| = d(f(x), f(p)) < \epsilon.
+    \end{align*}
+
+    Portanto, $f_i$ é contínua em $p$.
+
+    Reciprocamente, suponha que para todo $i$, $f_i$ é contínua em $p$.
+    Fixamos $\epsilon>0$ e, para cada $i$, existe $\delta_i>0$ tal que, se $d(x, p) < \delta_i$, então $|f_i(x) - f_i(p)| < \epsilon$.
+
+    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$. Então, se $d(x, p) < \delta$, temos que:
+
+    \begin{align*}
+        d(f(x), f(p)) &= \sqrt{(f_1(x) - f_1(p))^2 + \cdots + (f_m(x) - f_m(p))^2} \\
+        &< \sqrt{\epsilon^2+\dots+\epsilon^2}= \sqrt{m}\epsilon.
+    \end{align*}
+
+    Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A$ com $d(x, p) < \delta$, temos que $d(f(x), f(p)) < \epsilon'$.
+\end{proof}

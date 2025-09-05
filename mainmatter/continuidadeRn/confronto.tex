@@ -1,0 +1,25 @@
+\section{O Teorema do Confronto}
+
+\begin{proposition}
+    Sejam $f, g, h: A \to \mathbb R$ uma função, onde $A\subseteq \mathbb R^m$.
+
+    Sejam $p \in A$ um ponto de acumulação de $A$ e $L \in \mathbb R$.
+
+    Suponha que existe uma bola aberta $B$ em torno de $p$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos que $f(x) \leq g(x) \leq h(x)$.
+
+    Nessas hipóteses, se $\lim_{x\to p} f(x) = \lim_{x\to p} h(x) = L$, então $\lim_{x\to p} g(x) = L$.
+\end{proposition}
+
+\begin{proof}
+    Seja dado $\epsilon > 0$.
+    
+    Como $\lim_{x\to p} f(x) = L$, existe $\delta_f>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_f$, então $|f(x) - L| < \epsilon$.
+
+    Analogamente, como $\lim_{x\to p} h(x) = L$, existe $\delta_h>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_h$, então $|h(x) - L| < \epsilon$.
+
+    Por fim, existe $\delta_g>0$ tal que, para todo $x \in B(p, \delta_g)$, se $x \in A\setminus\{p\}$, então $f(x) \leq g(x) \leq h(x)$.
+
+    Seja $\delta = \min\{\delta_f, \delta_h, \delta_g\}$.
+
+    Seja $x \in A\setminus\{p\}$ tal que $d(x, p) < \delta$, então $-\epsilon<f(x) - L \leq g(x) - L \leq h(x) - L < \epsilon$, logo, $|g(x) - L| < \epsilon$, ou seja, $d(g(x), L) < \epsilon$.
+\end{proof}

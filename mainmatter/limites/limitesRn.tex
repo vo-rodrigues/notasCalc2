@@ -1,0 +1,139 @@
+\section{Pontos de acumulação e limites}
+Ao considerar a continuidade de uma função $f: A \to \mathbb R^m$, onde $A\subseteq \mathbb R^n$, no caso de $p \in A$ ser um ponto ``afastado'' do restante de $A$, é intuitivo que ao se considerar $x$ suficientemente próximo de $p$, a única possibilidade de escolha de $x$ é $p$, e, portanto, $f(x)$ estará arbitrariamente próximo de $f(p)$, uma vez que teremos $f(x)=f(p)$.
+
+Formalmente, definimos:
+
+\begin{definition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto e $p$ um ponto. Dizemos que $p$ é um \emph{ponto isolado} \index{ponto isolado} de $A$ se existe um $\delta>0$ tal que $B(p,\delta) \cap A = \{p\}$.
+
+    Caso isso não ocorra, $p$ é dito um \emph{ponto de acumulação} \index{ponto de acumulação} de $A$.
+
+    Ainda mais, mesmo que $p \notin A$, se para todo $\delta>0$ existe $x \in B(p,\delta) \cap A\setminus\{p\}$, dizemos que $p$ é um \emph{ponto de acumulação} de $A$.
+\end{definition}
+
+\begin{proposition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função. Se $p \in A$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
+\end{proposition}
+
+\begin{proof}
+    Seja $\epsilon>0$. Como $p$ é um ponto isolado de $A$, existe um $\delta>0$ tal que $B(p,\delta) \cap A = \{p\}$. Assim, se $x \in A$ e $d(x, p) < \delta$, temos que $x = p$. Portanto, $d(f(x), f(p)) = d(f(p), f(p)) = 0 < \epsilon$. Logo, $f$ é contínua em $p$.
+\end{proof}
+
+E quanto a pontos não isolados?
+
+Podemos estudar a continuidade deles a partir da noção de limite.
+Ao discutir a continuidade de uma função $f$ em $p$, queremos ver que $f(x)$ fica arbitrariamente próximo de $f(p)$ quando $x$ está suficientemente próximo de $p$.
+No caso de isso não ocorrer, o que pode ocorrer?
+
+Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, com $L \neq f(p)$.
+
+\begin{definition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+
+    Seja $L \in \mathbb R^m$.
+
+    Dizemos que $L$ é limite de $f$ em $p$ se, para toda bola aberta $B$ em torno de $L$, existe uma bola aberta $B'$ em torno de $p$ tal que $f[B'\cap A\setminus\{p\}]\subseteq B$.
+
+    Equivalentemente, $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que $f[B(p, \delta)\cap A\setminus\{p\}]\subseteq B(L, \varepsilon)$.
+
+        Ou, ainda, $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \varepsilon$.
+\end{definition}
+
+\begin{proposition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+
+    Então $f$ possui no máximo um limite em $p$.
+\end{proposition}
+
+\begin{proof}
+    Seja $L_1, L_2 \in \mathbb R^m$ limites de $f$ em $p$.
+
+    Suponha por absurdo que $L_1\neq L_2$. Então $d(L_1, L_2) > 0$.
+
+    Seja $R=\frac{d(L_1, L_2)}{2} > 0$. Então, existem $\delta_1, \delta_2 > 0$ tais que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_1$, então $d(f(x), L_1) < R$ e, se $d(x, p) < \delta_2$, então $d(f(x), L_2) < R$.
+
+    Seja $\delta = \min\{\delta_1, \delta_2\}$.
+    Como $p$ é ponto de acumulação de $A$, existe $x \in B(p, \delta)\cap A\setminus \{p\}$ tal que $x \in A\setminus\{p\}$.
+    
+    Assim, $d(x, p)<\delta\leq \delta_1, \delta_2$, logo:
+
+    \begin{align*}
+        d(f(x), L_1) &< R \\
+        d(f(x), L_2) &< R.
+    \end{align*}
+
+    Assim, temos que:
+
+    \begin{align*}
+        d(L_1, L_2) &\leq d(L_1, f(x)) + d(f(x), L_2) \\
+        &< R + R = 2R = d(L_1, L_2),
+    \end{align*}
+
+    o que é uma contradição. Logo, $L_1 = L_2$.
+\end{proof}
+\begin{definition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
+
+    Então, caso exista, o único limite de $f$ em $p$ é denotado por
+    
+    \begin{equation*}
+    \lim_{x\to p} f(x).
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
+
+    Então $f$ é contínua em $p$ se, e somente se, existe $\lim_{x\to p} f(x) = f(p)$.
+\end{proposition}
+
+\begin{proof}
+    Se $f$ é contínua em $p$, então para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A$, se $d(x, p) < \delta$, então $d(f(x), f(p)) < \epsilon$.
+    Por definição, temos imediatamente que $f(p)=\lim_{x\to p} f(x)$.
+
+    Agora, suponha que $f(p)$ é limite de $f$ em $p$. Então, para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), f(p)) < \epsilon$.
+
+    Resta apenas ver que vale a implicação $d(p, p)<\delta\rightarrow d(f(p), f(p)) < \epsilon$.
+    Ora, essa implicação nos diz que se $0<\delta$ então $0<\epsilon$, o que é verdade, uma vez que $0<\epsilon$.
+\end{proof}
+
+
+\begin{proposition}
+    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
+
+    Seja $L=(L_1, \dots, L_m)\in \mathbb R^m$.
+    Então $L$ é limite de $f$ em $p$, se, e somente se, para todo $i$ entre $1$ e $m$, $L_i$ é limite de $f_i$ em $p$.
+\end{proposition}
+
+\begin{proof}
+    Primeiro, suponha que $L$ é limite de $f$ em $p$.
+    Vejamos que cada $L_i$ é limite de $f_i$ em $p$.
+    
+    Para isso, fixamos um $i \in \{1, \dots, m\}$ e consideramos $\epsilon>0$.
+
+    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \epsilon$.
+
+    Veremos que o mesmo $\delta$ funciona para $f_i$.
+    De fato, se $d(x, p) < \delta$, então temos:
+
+    \begin{align*}
+        |f_i(x) - L_i| &= \sqrt{(f_i(x) - L_i)^2} \\
+        &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
+        &= \|f(x) - L\| = d(f(x), L) < \epsilon.
+    \end{align*}
+
+    Portanto, $f_i$ é limite de $f_i$ em $p$.
+
+    Reciprocamente, suponha que para todo $i$, $L_i$ é limite de $f_i$ em $p$.
+    Fixamos $\epsilon>0$ e, para cada $i$, existe $\delta_i>0$ tal que, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta_i$, então $|f_i(x) - L_i| < \epsilon$.
+
+    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$.
+    Então, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta$, temos que:
+
+    \begin{align*}
+        d(f(x), L) &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
+        &< \sqrt{\epsilon^2+\dots+\epsilon^2}= \sqrt{m}\epsilon.
+    \end{align*}
+
+    Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A\setminus\{p\}$ com $d(x, p) < \delta$, temos que $d(f(x), L) < \epsilon'$.
+\end{proof}
